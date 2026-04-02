@@ -18,18 +18,15 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="min-h-screen p-6 bg-[#0d0221] text-white" dir="rtl">
-      <div className="bg-[#1a0b3c] p-6 rounded-3xl mb-6 border border-purple-500/20 text-center">
-        <p className="text-gray-400 text-xs">مرحباً بك</p>
-        <h2 className="text-xl font-bold mt-1">{user?.email}</h2>
-        <span className="mt-3 inline-block bg-purple-600/20 px-4 py-1 rounded-full text-[10px] text-purple-300">UID: {user?.id.slice(0,8)}</span>
+    <div className="min-h-screen p-6 bg-[#0d0221] text-white text-right" dir="rtl">
+      <div className="bg-[#1a0b3c] p-6 rounded-2xl border border-purple-500/20 mb-6 shadow-lg">
+        <p className="text-gray-400 text-xs font-bold uppercase tracking-widest">المستخدم</p>
+        <h2 className="text-xl font-black mt-2 text-purple-400">{user?.email}</h2>
       </div>
 
-      <div className="bg-gradient-to-br from-purple-600 to-indigo-800 p-10 rounded-[2.5rem] text-center shadow-2xl relative overflow-hidden">
-        <div className="relative z-10">
-          <p className="text-purple-100 text-sm opacity-80">الرصيد المتاح</p>
-          <h1 className="text-5xl font-black mt-3">${wallet.balance_usdt.toFixed(2)}</h1>
-        </div>
+      <div className="bg-gradient-to-br from-purple-700 to-indigo-900 p-10 rounded-3xl text-center shadow-2xl">
+        <p className="text-purple-200 text-sm opacity-80 mb-2">إجمالي الرصيد</p>
+        <h1 className="text-5xl font-black">${wallet.balance_usdt.toFixed(2)}</h1>
       </div>
     </div>
   );
