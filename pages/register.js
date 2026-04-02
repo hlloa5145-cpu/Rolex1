@@ -17,20 +17,18 @@ export default function Register() {
     if (data.user) {
       await supabase.from('profiles').insert([{ id: data.user.id, full_name: form.name, email: form.email, referrer_id: form.ref }]);
       await supabase.from('wallets').insert([{ user_id: data.user.id, balance_usdt: 0 }]);
-      alert("تم التسجيل بنجاح!");
       router.push('/login');
     }
   };
 
   return (
-    <div className="min-h-screen p-6 bg-[#0d0221] text-white flex flex-col justify-center" dir="rtl">
-      <h1 className="text-3xl font-black mb-10 text-center text-accent">إنشاء حساب جديد</h1>
+    <div className="min-h-screen p-6 bg-[#0d0221] text-white flex flex-col justify-center text-right" dir="rtl">
+      <h1 className="text-3xl font-bold mb-8 text-center text-purple-500">فتح حساب</h1>
       <form onSubmit={handleSignUp} className="space-y-4">
-        <input type="text" placeholder="الاسم الكامل" className="w-full p-4 bg-[#1a0b3c] rounded-2xl border border-white/5" onChange={e => setForm({...form, name: e.target.value})} required />
-        <input type="email" placeholder="البريد الإلكتروني" className="w-full p-4 bg-[#1a0b3c] rounded-2xl border border-white/5" onChange={e => setForm({...form, email: e.target.value})} required />
-        <input type="password" placeholder="كلمة المرور" className="w-full p-4 bg-[#1a0b3c] rounded-2xl border border-white/5" onChange={e => setForm({...form, password: e.target.value})} required />
-        <input type="text" value={form.ref} placeholder="كود الدعوة (اختياري)" className="w-full p-4 bg-[#1a0b3c]/50 rounded-2xl border border-white/5 text-purple-400" readOnly />
-        <button className="w-full p-5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl font-black text-lg shadow-xl shadow-purple-900/20">ابدأ الآن 🚀</button>
+        <input type="text" placeholder="الاسم" className="w-full p-4 bg-[#1a0b3c] rounded-xl border border-white/10" onChange={e => setForm({...form, name: e.target.value})} required />
+        <input type="email" placeholder="البريد الإلكتروني" className="w-full p-4 bg-[#1a0b3c] rounded-xl border border-white/10" onChange={e => setForm({...form, email: e.target.value})} required />
+        <input type="password" placeholder="كلمة المرور" className="w-full p-4 bg-[#1a0b3c] rounded-xl border border-white/10" onChange={e => setForm({...form, password: e.target.value})} required />
+        <button className="w-full p-4 bg-purple-600 rounded-xl font-bold">تسجيل</button>
       </form>
     </div>
   );
